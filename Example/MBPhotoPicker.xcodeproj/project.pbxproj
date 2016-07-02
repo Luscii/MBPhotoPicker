@@ -12,7 +12,12 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		A71476D1D4989B507BD1CB95 /* Pods_MBPhotoPicker_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814BB7739C68A899FFE88BBD /* Pods_MBPhotoPicker_Example.framework */; };
+		9C13D0E31D27CD180010E14A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 9C13D0CF1D27CD180010E14A /* .gitkeep */; };
+		9C13D0E41D27CD180010E14A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C13D0D01D27CD180010E14A /* Localizable.strings */; };
+		9C13D0E51D27CD180010E14A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 9C13D0D41D27CD180010E14A /* .gitkeep */; };
+		9C13D0E61D27CD180010E14A /* MBPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C13D0D51D27CD180010E14A /* MBPhotoPicker.swift */; };
+		9C13D0E71D27CD180010E14A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C13D0D71D27CD180010E14A /* Localizable.strings */; };
+		9C13D0E81D27CD180010E14A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C13D0DC1D27CD180010E14A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +30,23 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		623858E77A79165F97741E9F /* MBPhotoPicker.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MBPhotoPicker.podspec; path = ../MBPhotoPicker.podspec; sourceTree = "<group>"; };
 		68A34E64444C9DBE5B505B48 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		7E2EA222C903BC643F608C5E /* Pods-MBPhotoPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBPhotoPicker_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBPhotoPicker_Tests/Pods-MBPhotoPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		814BB7739C68A899FFE88BBD /* Pods_MBPhotoPicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBPhotoPicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9DAAF503902B6DF4AC8775E /* Pods-MBPhotoPicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBPhotoPicker_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MBPhotoPicker_Example/Pods-MBPhotoPicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B25185EF5B4B1B8B92D16654 /* Pods_MBPhotoPicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MBPhotoPicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C78742673882FCE43AFB1B74 /* Pods-MBPhotoPicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBPhotoPicker_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBPhotoPicker_Example/Pods-MBPhotoPicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9C13D0CF1D27CD180010E14A /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		9C13D0D11D27CD180010E14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0D21D27CD180010E14A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0D41D27CD180010E14A /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		9C13D0D51D27CD180010E14A /* MBPhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPhotoPicker.swift; sourceTree = "<group>"; };
+		9C13D0D81D27CD180010E14A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0D91D27CD180010E14A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0DA1D27CD180010E14A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0DB1D27CD180010E14A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0DC1D27CD180010E14A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		9C13D0DD1D27CD180010E14A /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9C13D0DE1D27CD180010E14A /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9C13D0DF1D27CD180010E14A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0E01D27CD180010E14A /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C13D0E11D27CD180010E14A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9C13D0E21D27CD180010E14A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DC1C0DD417ADF80130870E2E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		E15E1F3E256366E895357D80 /* Pods-MBPhotoPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MBPhotoPicker_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MBPhotoPicker_Tests/Pods-MBPhotoPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EF47810E1C3C65C80072DF92 /* MBPhotoPicker_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MBPhotoPicker_Example.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,24 +55,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A71476D1D4989B507BD1CB95 /* Pods_MBPhotoPicker_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E49032C058382CC6F5C6430 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A9DAAF503902B6DF4AC8775E /* Pods-MBPhotoPicker_Example.debug.xcconfig */,
-				C78742673882FCE43AFB1B74 /* Pods-MBPhotoPicker_Example.release.xcconfig */,
-				7E2EA222C903BC643F608C5E /* Pods-MBPhotoPicker_Tests.debug.xcconfig */,
-				E15E1F3E256366E895357D80 /* Pods-MBPhotoPicker_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -65,8 +68,6 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for MBPhotoPicker */,
 				607FACD11AFB9204008FA782 /* Products */,
-				1E49032C058382CC6F5C6430 /* Pods */,
-				6613714FC1FD1B24BFEF440B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +82,7 @@
 		607FACD21AFB9204008FA782 /* Example for MBPhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				9C13D0CD1D27CD180010E14A /* Pod */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -110,13 +112,42 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		6613714FC1FD1B24BFEF440B /* Frameworks */ = {
+		9C13D0CD1D27CD180010E14A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				814BB7739C68A899FFE88BBD /* Pods_MBPhotoPicker_Example.framework */,
-				B25185EF5B4B1B8B92D16654 /* Pods_MBPhotoPicker_Tests.framework */,
+				9C13D0CE1D27CD180010E14A /* Assets */,
+				9C13D0D31D27CD180010E14A /* Classes */,
+				9C13D0D61D27CD180010E14A /* Localizations */,
 			);
-			name = Frameworks;
+			name = Pod;
+			path = ../../Pod;
+			sourceTree = "<group>";
+		};
+		9C13D0CE1D27CD180010E14A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9C13D0CF1D27CD180010E14A /* .gitkeep */,
+				9C13D0D01D27CD180010E14A /* Localizable.strings */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		9C13D0D31D27CD180010E14A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C13D0D41D27CD180010E14A /* .gitkeep */,
+				9C13D0D51D27CD180010E14A /* MBPhotoPicker.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9C13D0D61D27CD180010E14A /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				9C13D0D71D27CD180010E14A /* Localizable.strings */,
+				9C13D0DC1D27CD180010E14A /* Localizable.strings */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,12 +157,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "MBPhotoPicker_Example" */;
 			buildPhases = (
-				85D4CE6A804A07348F233B68 /* Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				9EE9D2560646D0C78CDAEAE9 /* Embed Pods Frameworks */,
-				C22924399FEDA760E52CBB9C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,6 +198,15 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				de,
+				es,
+				"pt-BR",
+				"pt-PT",
+				ru,
+				vi,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
@@ -186,61 +223,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C13D0E41D27CD180010E14A /* Localizable.strings in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				9C13D0E71D27CD180010E14A /* Localizable.strings in Resources */,
+				9C13D0E51D27CD180010E14A /* .gitkeep in Resources */,
+				9C13D0E81D27CD180010E14A /* Localizable.strings in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				9C13D0E31D27CD180010E14A /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		85D4CE6A804A07348F233B68 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		9EE9D2560646D0C78CDAEAE9 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBPhotoPicker_Example/Pods-MBPhotoPicker_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C22924399FEDA760E52CBB9C /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MBPhotoPicker_Example/Pods-MBPhotoPicker_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607FACCC1AFB9204008FA782 /* Sources */ = {
@@ -248,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				9C13D0E61D27CD180010E14A /* MBPhotoPicker.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +264,32 @@
 				607FACDF1AFB9204008FA782 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		9C13D0D01D27CD180010E14A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C13D0D11D27CD180010E14A /* en */,
+				9C13D0D21D27CD180010E14A /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		9C13D0D71D27CD180010E14A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C13D0D81D27CD180010E14A /* de */,
+				9C13D0D91D27CD180010E14A /* en */,
+				9C13D0DA1D27CD180010E14A /* es */,
+				9C13D0DB1D27CD180010E14A /* fr */,
+				9C13D0DD1D27CD180010E14A /* pt-BR */,
+				9C13D0DE1D27CD180010E14A /* pt-PT */,
+				9C13D0DF1D27CD180010E14A /* ru */,
+				9C13D0E01D27CD180010E14A /* vi */,
+				9C13D0E11D27CD180010E14A /* zh-Hans */,
+				9C13D0E21D27CD180010E14A /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -358,7 +379,6 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9DAAF503902B6DF4AC8775E /* Pods-MBPhotoPicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MBPhotoPicker_Example.entitlements;
@@ -376,7 +396,6 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C78742673882FCE43AFB1B74 /* Pods-MBPhotoPicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MBPhotoPicker_Example.entitlements;

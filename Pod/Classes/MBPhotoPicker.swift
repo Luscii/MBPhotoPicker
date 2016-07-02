@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import MobileCoreServices
 
-@objc public class MBPhotoPicker: NSObject {
+public class MBPhotoPicker: NSObject {
     
     // MARK: Localized strings
     public var alertTitle: String? = "Alert title"

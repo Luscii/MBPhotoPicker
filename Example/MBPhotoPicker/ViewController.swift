@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBPhotoPicker
 
 class ViewController: UIViewController {
     
