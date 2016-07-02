@@ -61,9 +61,11 @@ public class MBPhotoPicker: NSObject {
     
     public var errorCompletionHandler: ((error: ErrorPhotoPicker!) -> Void)?
     
+    public var otherCompletionHandler: (() -> Void)?
+    
 
     // MARK: Error's definition
-    public enum ErrorPhotoPicker: String {
+    @objc public enum ErrorPhotoPicker: String {
         case CameraNotAvailable = "Camera not available"
         case LibraryNotAvailable = "Library not available"
         case AccessDeniedCameraRoll = "Access denied to camera roll"
@@ -119,11 +121,13 @@ public class MBPhotoPicker: NSObject {
         
         if !self.disableEntitlements {
             let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
-                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
-                document.delegate = self
-                controller.presentViewController(document, animated: true, completion: nil)
+//                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
+//                document.delegate = self
+//                controller.presentViewController(document, animated: true, completion: nil)
+                otherCompletionHandler()
             })
             alert.addAction(actionOther)
+            
         }
         
         
