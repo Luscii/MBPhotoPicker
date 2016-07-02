@@ -119,7 +119,7 @@ public class MBPhotoPicker: NSObject {
         })
         
         
-        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: allowDestructive ? .Destructive : .Cancel, handler: { (alert: UIAlertAction!) -> Void in
+        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .Cancel, handler: { (alert: UIAlertAction!) -> Void in
             self.cancelCompletionHandler?()
         })
         
@@ -129,7 +129,7 @@ public class MBPhotoPicker: NSObject {
         alert.addAction(actionCancel)
         
         if !self.disableEntitlements {
-            let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
+            let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: allowDestructive ? .Destructive : .Default, handler: { (alert: UIAlertAction!) -> Void in
 //                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
 //                document.delegate = self
 //                controller.presentViewController(document, animated: true, completion: nil)
