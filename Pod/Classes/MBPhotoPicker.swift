@@ -65,14 +65,14 @@ public class MBPhotoPicker: NSObject {
     
 
     // MARK: Error's definition
-    @objc public enum ErrorPhotoPicker: String {
-        case CameraNotAvailable = "Camera not available"
-        case LibraryNotAvailable = "Library not available"
-        case AccessDeniedCameraRoll = "Access denied to camera roll"
-        case EntitlementiCloud = "Missing iCloud Capatability"
-        case WrongFileType = "Wrong file type"
-        case PopoverTarget = "Missing property popoverTarget while iPad is run"
-        case Other = "Other"
+    @objc public enum ErrorPhotoPicker: Int {
+        case CameraNotAvailable
+        case LibraryNotAvailable
+        case AccessDeniedCameraRoll
+        case EntitlementiCloud
+        case WrongFileType
+        case PopoverTargetMissing
+        case Other
     }
     
 
@@ -124,7 +124,7 @@ public class MBPhotoPicker: NSObject {
 //                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
 //                document.delegate = self
 //                controller.presentViewController(document, animated: true, completion: nil)
-                otherCompletionHandler()
+                self.otherCompletionHandler?()
             })
             alert.addAction(actionOther)
             
@@ -133,7 +133,7 @@ public class MBPhotoPicker: NSObject {
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             guard let popover = self.popoverTarget else {
-                self.errorCompletionHandler?(error: .PopoverTarget)
+                self.errorCompletionHandler?(error: .PopoverTargetMissing)
                 return;
             }
             
