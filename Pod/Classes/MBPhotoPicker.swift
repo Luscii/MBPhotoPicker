@@ -146,7 +146,6 @@ public class MBPhotoPicker: NSObject {
         }
         
         
-        
         let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .Cancel, handler: { (alert: UIAlertAction!) -> Void in
             self.cancelCompletionHandler?()
         })
@@ -201,18 +200,18 @@ public class MBPhotoPicker: NSObject {
         self.photoCompletionHandler?(image: resizedImage)
     }
     
-    func localizeString(var string: String!) -> String! {
+    func localizeString(string: String!) -> String! {
+        var localizedString = string
         let podBundle = NSBundle(forClass: self.classForCoder)
         if let bundleURL = podBundle.URLForResource("MBPhotoPicker", withExtension: "bundle") {
             if let bundle = NSBundle(URL: bundleURL) {
-                string = NSLocalizedString(string, tableName: "Localizable", bundle: bundle, value: "", comment: "")
-                
+                localizedString = NSLocalizedString(string, tableName: "Localizable", bundle: bundle, value: "", comment: "")
             } else {
                 assertionFailure("Could not load the bundle")
             }
         }
         
-        return string!
+        return localizedString!
     }
 }
 
