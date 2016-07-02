@@ -63,6 +63,11 @@ public class MBPhotoPicker: NSObject {
     
     public var otherCompletionHandler: (() -> Void)?
     
+    /**
+     Customization colors
+     */
+    public var alertTintColor: UIColor!
+    
 
     // MARK: Error's definition
     @objc public enum ErrorPhotoPicker: Int {
@@ -86,6 +91,8 @@ public class MBPhotoPicker: NSObject {
         self.controller = controller
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .ActionSheet)
+        
+        alert.view.tintColor = alertTintColor!
         
         let actionTakePhoto = UIAlertAction(title: self.localizeString(actionTitleTakePhoto), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) {
