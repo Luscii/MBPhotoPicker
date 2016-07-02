@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import MobileCoreServices
 
-public class MBPhotoPicker: NSObject {
+@objc public class MBPhotoPicker: NSObject {
     
     // MARK: Localized strings
     public var alertTitle: String? = "Alert title"
@@ -59,7 +59,7 @@ public class MBPhotoPicker: NSObject {
     
     public var cancelCompletionHandler: (() -> Void)?
     
-    public var errorCompletionHandler: ((error: ErrorPhotoPicker!) -> Void)?
+    @objc public var errorCompletionHandler: ((error: ErrorPhotoPicker) -> Void)?
     
     public var otherCompletionHandler: (() -> Void)?
     
@@ -67,7 +67,6 @@ public class MBPhotoPicker: NSObject {
      Customization colors
      */
     public var alertTintColor: UIColor!
-    
     
     // MARK: Error's definition
     @objc public enum ErrorPhotoPicker: Int {
@@ -78,8 +77,19 @@ public class MBPhotoPicker: NSObject {
         case WrongFileType
         case PopoverTargetMissing
         case Other
+        
+        public func name() -> String {
+            switch self {
+            case CameraNotAvailable: return "Camera not available"
+            case LibraryNotAvailable: return "Library not available"
+            case AccessDeniedCameraRoll: return "Access denied to camera roll"
+            case EntitlementiCloud: return "Missing iCloud Capatability"
+            case WrongFileType: return "Wrong file type"
+            case PopoverTargetMissing: return "Missing property popoverTarget while iPad is run"
+            case Other: return "Other"
+            }
+        }
     }
-    
     
     // MARK: Public
     public func present() -> Void {
@@ -126,9 +136,9 @@ public class MBPhotoPicker: NSObject {
         
         if !self.disableEntitlements {
             let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: allowDestructive ? .Destructive : .Default, handler: { (alert: UIAlertAction!) -> Void in
-//                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
-//                document.delegate = self
-//                controller.presentViewController(document, animated: true, completion: nil)
+                //                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
+                //                document.delegate = self
+                //                controller.presentViewController(document, animated: true, completion: nil)
                 self.otherCompletionHandler?()
             })
             
