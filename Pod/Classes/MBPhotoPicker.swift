@@ -68,7 +68,7 @@ public class MBPhotoPicker: NSObject {
      */
     public var alertTintColor: UIColor!
     
-
+    
     // MARK: Error's definition
     @objc public enum ErrorPhotoPicker: Int {
         case CameraNotAvailable
@@ -80,7 +80,7 @@ public class MBPhotoPicker: NSObject {
         case Other
     }
     
-
+    
     // MARK: Public
     public func present() -> Void {
         let topController = UIApplication.sharedApplication().windows.first?.rootViewController
@@ -327,7 +327,7 @@ extension NSData {
         switch (c[0]) {
         case 0xFF, 0x89, 0x00, 0x4D, 0x49, 0x47, 0x42:
             return true
-        default: 
+        default:
             return false
         }
     }

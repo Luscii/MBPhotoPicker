@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBPhotoPicker
 
 class ViewController: UIViewController {
     
@@ -30,7 +29,7 @@ class ViewController: UIViewController {
         photo?.alertTitle = nil
         photo?.alertMessage = nil
         photo?.resizeImage = CGSizeMake(250, 150)
-        photo?.allowDestructive = false
+        photo?.allowDestructive = true
         photo?.allowEditing = false
         photo?.cameraDevice = .Rear
         photo?.cameraFlashMode = .Auto
