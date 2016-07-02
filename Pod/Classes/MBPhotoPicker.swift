@@ -92,7 +92,9 @@ public class MBPhotoPicker: NSObject {
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .ActionSheet)
         
-        alert.view.tintColor = alertTintColor!
+        if (alertTintColor != nil) {
+            alert.view.tintColor = alertTintColor!
+        }
         
         let actionTakePhoto = UIAlertAction(title: self.localizeString(actionTitleTakePhoto), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.Camera) {
