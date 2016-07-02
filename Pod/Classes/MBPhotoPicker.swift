@@ -104,6 +104,8 @@ public class MBPhotoPicker: NSObject {
             }
         })
         
+        alert.addAction(actionTakePhoto)
+        
         let actionLibrary = UIAlertAction(title: self.localizeString(actionTitleLibrary), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
             if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
                 self.presentImagePicker(.PhotoLibrary, topController: controller)
@@ -112,21 +114,15 @@ public class MBPhotoPicker: NSObject {
             }
         })
         
+        alert.addAction(actionLibrary)
+        
         let actionLast = UIAlertAction(title: self.localizeString(actionTitleLastPhoto), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
             self.lastPhotoTaken({ (image) -> Void in self.photoHandler(image) },
                 errorHandler: { (error) -> Void in self.errorCompletionHandler?(error: .AccessDeniedCameraRoll) }
             )
         })
         
-        
-        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .Cancel, handler: { (alert: UIAlertAction!) -> Void in
-            self.cancelCompletionHandler?()
-        })
-        
-        alert.addAction(actionTakePhoto)
-        alert.addAction(actionLibrary)
         alert.addAction(actionLast)
-        alert.addAction(actionCancel)
         
         if !self.disableEntitlements {
             let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: allowDestructive ? .Destructive : .Default, handler: { (alert: UIAlertAction!) -> Void in
@@ -135,9 +131,17 @@ public class MBPhotoPicker: NSObject {
 //                controller.presentViewController(document, animated: true, completion: nil)
                 self.otherCompletionHandler?()
             })
-            alert.addAction(actionOther)
             
+            alert.addAction(actionOther)
         }
+        
+        
+        
+        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .Cancel, handler: { (alert: UIAlertAction!) -> Void in
+            self.cancelCompletionHandler?()
+        })
+        
+        alert.addAction(actionCancel)
         
         
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
