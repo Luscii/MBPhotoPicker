@@ -40,7 +40,8 @@ class ViewController: UIViewController {
             photo?.popoverRect = self.photoButton.bounds // It's also default value
         }
         
-        photo?.photoCompletionHandler = { (image: UIImage!) -> Void in
+        photo?.photoCompletionHandler = { (image: UIImage?) -> Void in
+            
             self.previewImageView.image = image;
         }
         photo?.cancelCompletionHandler = {

@@ -283,7 +283,7 @@ extension MBPhotoPicker {
                 let fetchOptions = PHFetchOptions()
                 fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
                 let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
-                let asset: PHAsset? = fetchResult.lastObject as? PHAsset
+                let asset: PHAsset? = fetchResult.lastObject as PHAsset!
                 
                 let initialRequestOptions = PHImageRequestOptions()
                 initialRequestOptions.isSynchronous = true
