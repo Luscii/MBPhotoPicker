@@ -10,132 +10,132 @@ import UIKit
 import Photos
 import MobileCoreServices
 
-public class MBPhotoPicker: NSObject {
+open class MBPhotoPicker: NSObject {
     
     // MARK: Localized strings
-    public var alertTitle: String? = "Alert title"
+    open var alertTitle: String? = "Alert title"
     
-    public var alertMessage: String? = "Alert message"
+    open var alertMessage: String? = "Alert message"
     
-    public var actionTitleCancel: String = "Action Cancel"
+    open var actionTitleCancel: String = "Action Cancel"
     
-    public var actionTitleTakePhoto: String = "Action take photo"
+    open var actionTitleTakePhoto: String = "Action take photo"
     
-    public var actionTitleLastPhoto: String = "Action last photo"
+    open var actionTitleLastPhoto: String = "Action last photo"
     
-    public var actionTitleOther: String = "Action other"
+    open var actionTitleOther: String = "Action other"
     
-    public var actionTitleLibrary: String = "Action Library"
+    open var actionTitleLibrary: String = "Action Library"
     
     
     // MARK: Photo picker settings
-    public var allowDestructive: Bool = false
+    open var allowDestructive: Bool = false
     
-    public var allowEditing: Bool = false
+    open var allowEditing: Bool = false
     
-    public var disableEntitlements: Bool = false
+    open var disableEntitlements: Bool = false
     
-    public var cameraDevice: UIImagePickerControllerCameraDevice = .Rear
+    open var cameraDevice: UIImagePickerControllerCameraDevice = .rear
     
-    public var cameraFlashMode: UIImagePickerControllerCameraFlashMode = .Auto
+    open var cameraFlashMode: UIImagePickerControllerCameraFlashMode = .auto
     
-    public var resizeImage: CGSize?
+    open var resizeImage: CGSize?
     
     /**
      Using for iPad devices
      */
-    public var popoverTarget: UIView?
+    open var popoverTarget: UIView?
     
-    public var popoverRect: CGRect?
+    open var popoverRect: CGRect?
     
-    public var popoverDirection: UIPopoverArrowDirection = .Any
+    open var popoverDirection: UIPopoverArrowDirection = .any
     
     /**
      List of callbacks variables
      */
-    public var photoCompletionHandler: ((image: UIImage!) -> Void)?
+    open var photoCompletionHandler: ((_ image: UIImage?) -> Void)?
     
-    public var presentedCompletionHandler: (() -> Void)?
+    open var presentedCompletionHandler: (() -> Void)?
     
-    public var cancelCompletionHandler: (() -> Void)?
+    open var cancelCompletionHandler: (() -> Void)?
     
-    @objc public var errorCompletionHandler: ((error: ErrorPhotoPicker) -> Void)?
+    @objc open var errorCompletionHandler: ((_ error: ErrorPhotoPicker) -> Void)?
     
-    public var otherCompletionHandler: (() -> Void)?
+    open var otherCompletionHandler: (() -> Void)?
     
     /**
      Customization colors
      */
-    public var alertTintColor: UIColor!
+    open var alertTintColor: UIColor!
     
     // MARK: Error's definition
     @objc public enum ErrorPhotoPicker: Int {
-        case CameraNotAvailable
-        case LibraryNotAvailable
-        case AccessDeniedCameraRoll
-        case EntitlementiCloud
-        case WrongFileType
-        case PopoverTargetMissing
-        case Other
+        case cameraNotAvailable
+        case libraryNotAvailable
+        case accessDeniedCameraRoll
+        case entitlementiCloud
+        case wrongFileType
+        case popoverTargetMissing
+        case other
         
         public func name() -> String {
             switch self {
-            case CameraNotAvailable: return "Camera not available"
-            case LibraryNotAvailable: return "Library not available"
-            case AccessDeniedCameraRoll: return "Access denied to camera roll"
-            case EntitlementiCloud: return "Missing iCloud Capatability"
-            case WrongFileType: return "Wrong file type"
-            case PopoverTargetMissing: return "Missing property popoverTarget while iPad is run"
-            case Other: return "Other"
+            case .cameraNotAvailable: return "Camera not available"
+            case .libraryNotAvailable: return "Library not available"
+            case .accessDeniedCameraRoll: return "Access denied to camera roll"
+            case .entitlementiCloud: return "Missing iCloud Capatability"
+            case .wrongFileType: return "Wrong file type"
+            case .popoverTargetMissing: return "Missing property popoverTarget while iPad is run"
+            case .other: return "Other"
             }
         }
     }
     
     // MARK: Public
-    public func present() -> Void {
-        let topController = UIApplication.sharedApplication().windows.first?.rootViewController
+    open func present() -> Void {
+        let topController = UIApplication.shared.windows.first?.rootViewController
         present(topController!)
     }
     
-    public func present(controller: UIViewController!) -> Void {
+    open func present(_ controller: UIViewController!) -> Void {
         self.controller = controller
         
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .actionSheet)
         
         if (alertTintColor != nil) {
             alert.view.tintColor = alertTintColor!
         }
         
-        let actionTakePhoto = UIAlertAction(title: self.localizeString(actionTitleTakePhoto), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
-            if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-                self.presentImagePicker(.Camera, topController: controller)
+        let actionTakePhoto = UIAlertAction(title: self.localizeString(actionTitleTakePhoto), style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.presentImagePicker(.camera, topController: controller)
             } else {
-                self.errorCompletionHandler?(error: .CameraNotAvailable)
+                self.errorCompletionHandler?(.cameraNotAvailable)
             }
         })
         
         alert.addAction(actionTakePhoto)
         
-        let actionLibrary = UIAlertAction(title: self.localizeString(actionTitleLibrary), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
-            if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
-                self.presentImagePicker(.PhotoLibrary, topController: controller)
+        let actionLibrary = UIAlertAction(title: self.localizeString(actionTitleLibrary), style: .default, handler: { (alert: UIAlertAction!) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                self.presentImagePicker(.photoLibrary, topController: controller)
             } else {
-                self.errorCompletionHandler?(error: .LibraryNotAvailable)
+                self.errorCompletionHandler?(.libraryNotAvailable)
             }
         })
         
         alert.addAction(actionLibrary)
         
-        let actionLast = UIAlertAction(title: self.localizeString(actionTitleLastPhoto), style: .Default, handler: { (alert: UIAlertAction!) -> Void in
+        let actionLast = UIAlertAction(title: self.localizeString(actionTitleLastPhoto), style: .default, handler: { (alert: UIAlertAction!) -> Void in
             self.lastPhotoTaken({ (image) -> Void in self.photoHandler(image) },
-                errorHandler: { (error) -> Void in self.errorCompletionHandler?(error: .AccessDeniedCameraRoll) }
+                errorHandler: { (error) -> Void in self.errorCompletionHandler?(.accessDeniedCameraRoll) }
             )
         })
         
         alert.addAction(actionLast)
         
         if !self.disableEntitlements {
-            let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: allowDestructive ? .Destructive : .Default, handler: { (alert: UIAlertAction!) -> Void in
+            let actionOther = UIAlertAction(title: self.localizeString(actionTitleOther), style: allowDestructive ? .destructive : .default, handler: { (alert: UIAlertAction!) -> Void in
                 //                let document = UIDocumentMenuViewController(documentTypes: [kUTTypeImage as String, kUTTypeJPEG as String, kUTTypePNG as String, kUTTypeBMP as String, kUTTypeTIFF as String], inMode: .Import)
                 //                document.delegate = self
                 //                controller.presentViewController(document, animated: true, completion: nil)
@@ -146,21 +146,21 @@ public class MBPhotoPicker: NSObject {
         }
         
         
-        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .Cancel, handler: { (alert: UIAlertAction!) -> Void in
+        let actionCancel = UIAlertAction(title: self.localizeString(actionTitleCancel), style: .cancel, handler: { (alert: UIAlertAction!) -> Void in
             self.cancelCompletionHandler?()
         })
         
         alert.addAction(actionCancel)
         
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             guard let popover = self.popoverTarget else {
-                self.errorCompletionHandler?(error: .PopoverTargetMissing)
+                self.errorCompletionHandler?(.popoverTargetMissing)
                 return;
             }
             
             if let presenter = alert.popoverPresentationController {
-                alert.modalPresentationStyle = .Popover
+                alert.modalPresentationStyle = .popover
                 presenter.sourceView = popover;
                 presenter.permittedArrowDirections = self.popoverDirection
                 
@@ -172,7 +172,7 @@ public class MBPhotoPicker: NSObject {
             }
         }
         
-        controller.presentViewController(alert, animated: true) { () -> Void in
+        controller.present(alert, animated: true) { () -> Void in
             self.presentedCompletionHandler?()
         }
     }
@@ -181,30 +181,30 @@ public class MBPhotoPicker: NSObject {
     internal weak var controller: UIViewController?
     
     var imagePicker: UIImagePickerController!
-    func presentImagePicker(sourceType: UIImagePickerControllerSourceType, topController: UIViewController!) {
+    func presentImagePicker(_ sourceType: UIImagePickerControllerSourceType, topController: UIViewController!) {
         imagePicker = UIImagePickerController()
         imagePicker.sourceType = sourceType
         imagePicker.delegate = self
-        imagePicker.editing = self.allowEditing
-        if sourceType == .Camera {
+        imagePicker.isEditing = self.allowEditing
+        if sourceType == .camera {
             imagePicker.cameraDevice = self.cameraDevice
-            if UIImagePickerController.isFlashAvailableForCameraDevice(self.cameraDevice) {
+            if UIImagePickerController.isFlashAvailable(for: self.cameraDevice) {
                 imagePicker.cameraFlashMode = self.cameraFlashMode
             }
         }
-        topController.presentViewController(imagePicker, animated: true, completion: nil)
+        topController.present(imagePicker, animated: true, completion: nil)
     }
     
-    func photoHandler(image: UIImage!) -> Void {
+    func photoHandler(_ image: UIImage!) -> Void {
         let resizedImage: UIImage = UIImage.resizeImage(image, newSize: self.resizeImage)
-        self.photoCompletionHandler?(image: resizedImage)
+        self.photoCompletionHandler?(resizedImage)
     }
     
-    func localizeString(string: String!) -> String! {
+    func localizeString(_ string: String!) -> String! {
         var localizedString = string
-        let podBundle = NSBundle(forClass: self.classForCoder)
-        if let bundleURL = podBundle.URLForResource("MBPhotoPicker", withExtension: "bundle") {
-            if let bundle = NSBundle(URL: bundleURL) {
+        let podBundle = Bundle(for: self.classForCoder)
+        if let bundleURL = podBundle.url(forResource: "MBPhotoPicker", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
                 localizedString = NSLocalizedString(string, tableName: "Localizable", bundle: bundle, value: "", comment: "")
             } else {
                 assertionFailure("Could not load the bundle")
@@ -216,111 +216,111 @@ public class MBPhotoPicker: NSObject {
 }
 
 extension MBPhotoPicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    public func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        picker.dismissViewControllerAnimated(true) { () -> Void in
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) { () -> Void in
             self.cancelCompletionHandler?()
         }
     }
     
-    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] {
             self.photoHandler(image as! UIImage)
         } else {
-            self.errorCompletionHandler?(error: .Other)
+            self.errorCompletionHandler?(.other)
         }
-        picker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
-    public func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
 extension MBPhotoPicker: UIDocumentPickerDelegate {
-    public func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         var error: NSError?
         let filerCordinator = NSFileCoordinator()
-        filerCordinator.coordinateReadingItemAtURL(url, options: .WithoutChanges, error: &error, byAccessor: { (url: NSURL) -> Void in
-            if let data: NSData = NSData(contentsOfURL: url) {
+        filerCordinator.coordinate(readingItemAt: url, options: .withoutChanges, error: &error, byAccessor: { (url: URL) -> Void in
+            if let data: Data = try? Data(contentsOf: url) {
                 if data.isSupportedImageType() {
                     if let image: UIImage = UIImage(data: data) {
                         self.photoHandler(image)
                     } else {
-                        self.errorCompletionHandler?(error: .Other)
+                        self.errorCompletionHandler?(.other)
                     }
                 } else {
-                    self.errorCompletionHandler?(error: .WrongFileType)
+                    self.errorCompletionHandler?(.wrongFileType)
                 }
             } else {
-                self.errorCompletionHandler?(error: .Other)
+                self.errorCompletionHandler?(.other)
             }
         })
     }
     
-    public func documentPickerWasCancelled(controller: UIDocumentPickerViewController) {
+    public func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         self.cancelCompletionHandler?()
     }
 }
 
 extension MBPhotoPicker: UIDocumentMenuDelegate {
-    public func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+    public func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
         documentPicker.delegate = self
-        self.controller?.presentViewController(documentPicker, animated: true, completion: nil)
+        self.controller?.present(documentPicker, animated: true, completion: nil)
     }
     
-    public func documentMenuWasCancelled(documentMenu: UIDocumentMenuViewController) {
+    public func documentMenuWasCancelled(_ documentMenu: UIDocumentMenuViewController) {
         self.cancelCompletionHandler?()
     }
 }
 
 
 extension MBPhotoPicker {
-    internal func lastPhotoTaken (completionHandler: (image: UIImage?) -> Void, errorHandler: (error: NSError?) -> Void) {
+    internal func lastPhotoTaken (_ completionHandler: @escaping (_ image: UIImage?) -> Void, errorHandler: @escaping (_ error: NSError?) -> Void) {
         
         PHPhotoLibrary.requestAuthorization { (status: PHAuthorizationStatus) -> Void in
-            if (status == PHAuthorizationStatus.Authorized) {
-                let manager = PHImageManager.defaultManager()
+            if (status == PHAuthorizationStatus.authorized) {
+                let manager = PHImageManager.default()
                 let fetchOptions = PHFetchOptions()
                 fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
-                let fetchResult: PHFetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
+                let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
                 let asset: PHAsset? = fetchResult.lastObject as? PHAsset
                 
                 let initialRequestOptions = PHImageRequestOptions()
-                initialRequestOptions.synchronous = true
-                initialRequestOptions.resizeMode = .Fast
-                initialRequestOptions.deliveryMode = .FastFormat
+                initialRequestOptions.isSynchronous = true
+                initialRequestOptions.resizeMode = .fast
+                initialRequestOptions.deliveryMode = .fastFormat
                 
-                manager.requestImageDataForAsset(asset!, options: initialRequestOptions) { (data: NSData?, title: String?, orientation: UIImageOrientation, info: [NSObject : AnyObject]?) -> Void in
+                manager.requestImageData(for: asset!, options: initialRequestOptions) { (data: Data?, title: String?, orientation: UIImageOrientation, info: [AnyHashable: Any]?) -> Void in
                     guard let dataImage = data else {
-                        errorHandler(error: nil)
+                        errorHandler(nil)
                         return
                     }
                     
                     let image:UIImage = UIImage(data: dataImage)!
                     
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        completionHandler(image: image)
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        completionHandler(image)
                     })
                 }
             } else {
-                errorHandler(error: nil)
+                errorHandler(nil)
             }
         }
     }
 }
 
 extension UIImage {
-    static public func resizeImage(image: UIImage!, newSize: CGSize?) -> UIImage! {
+    static public func resizeImage(_ image: UIImage!, newSize: CGSize?) -> UIImage! {
         guard var size = newSize else { return image }
         
         let widthRatio = size.width/image.size.width
         let heightRatio = size.height/image.size.height
         
         let ratio = min(widthRatio, heightRatio)
-        size = CGSizeMake(image.size.width*ratio, image.size.height*ratio)
+        size = CGSize(width: image.size.width*ratio, height: image.size.height*ratio)
         
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
-        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         
         let scaledImage: UIImage! = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
@@ -329,10 +329,10 @@ extension UIImage {
     }
 }
 
-extension NSData {
+extension Data {
     public func isSupportedImageType() -> Bool {
-        var c = [UInt32](count: 1, repeatedValue: 0)
-        self.getBytes(&c, length: 1)
+        var c = [UInt32](repeating: 0, count: 1)
+        (self as NSData).getBytes(&c, length: 1)
         switch (c[0]) {
         case 0xFF, 0x89, 0x00, 0x4D, 0x49, 0x47, 0x42:
             return true

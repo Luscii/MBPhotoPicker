@@ -23,20 +23,20 @@ class ViewController: UIViewController {
     }
     
     var photo: MBPhotoPicker?
-    @IBAction func didTapPhotoPicker(sender: AnyObject) {
+    @IBAction func didTapPhotoPicker(_ sender: AnyObject) {
         photo = MBPhotoPicker()
         photo?.disableEntitlements = false // If you don't want use iCloud entitlement just set this value True
         photo?.alertTitle = nil
         photo?.alertMessage = nil
-        photo?.resizeImage = CGSizeMake(250, 150)
+        photo?.resizeImage = CGSize(width: 250, height: 150)
         photo?.allowDestructive = false
         photo?.allowEditing = false
-        photo?.cameraDevice = .Rear
-        photo?.cameraFlashMode = .Auto
+        photo?.cameraDevice = .rear
+        photo?.cameraFlashMode = .auto
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             photo?.popoverTarget = self.photoButton!
-            photo?.popoverDirection = .Up
+            photo?.popoverDirection = .up
             photo?.popoverRect = self.photoButton.bounds // It's also default value
         }
         
