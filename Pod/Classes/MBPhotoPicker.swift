@@ -10,63 +10,63 @@ import UIKit
 import Photos
 import MobileCoreServices
 
-open class MBPhotoPicker: NSObject {
+@objc open class MBPhotoPicker: NSObject {
     
     // MARK: Localized strings
-    open var alertTitle: String? = "Alert title"
+    @objc open var alertTitle: String? = "Alert title"
     
-    open var alertMessage: String? = "Alert message"
+    @objc open var alertMessage: String? = "Alert message"
     
-    open var actionTitleCancel: String = "Action Cancel"
+    @objc open var actionTitleCancel: String = "Action Cancel"
     
-    open var actionTitleTakePhoto: String = "Action take photo"
+    @objc open var actionTitleTakePhoto: String = "Action take photo"
     
-    open var actionTitleLastPhoto: String = "Action last photo"
+    @objc open var actionTitleLastPhoto: String = "Action last photo"
     
-    open var actionTitleOther: String = "Action other"
+    @objc open var actionTitleOther: String = "Action other"
     
-    open var actionTitleLibrary: String = "Action Library"
+    @objc open var actionTitleLibrary: String = "Action Library"
     
     
     // MARK: Photo picker settings
-    open var allowDestructive: Bool = false
+    @objc open var allowDestructive: Bool = false
     
-    open var allowEditing: Bool = false
+    @objc open var allowEditing: Bool = false
     
-    open var disableEntitlements: Bool = false
+    @objc open var disableEntitlements: Bool = false
     
-    open var cameraDevice: UIImagePickerControllerCameraDevice = .rear
+    @objc open var cameraDevice: UIImagePickerControllerCameraDevice = .rear
     
-    open var cameraFlashMode: UIImagePickerControllerCameraFlashMode = .auto
+    @objc open var cameraFlashMode: UIImagePickerControllerCameraFlashMode = .auto
     
     open var resizeImage: CGSize?
     
     /**
      Using for iPad devices
      */
-    open var popoverTarget: UIView?
+    @objc open var popoverTarget: UIView?
     
     open var popoverRect: CGRect?
     
-    open var popoverDirection: UIPopoverArrowDirection = .any
+    @objc open var popoverDirection: UIPopoverArrowDirection = .any
     
     /**
      List of callbacks variables
      */
-    open var photoCompletionHandler: ((_ image: UIImage?) -> Void)?
+    @objc open var photoCompletionHandler: ((_ image: UIImage?) -> Void)?
     
-    open var presentedCompletionHandler: (() -> Void)?
+    @objc open var presentedCompletionHandler: (() -> Void)?
     
-    open var cancelCompletionHandler: (() -> Void)?
+    @objc open var cancelCompletionHandler: (() -> Void)?
     
     @objc open var errorCompletionHandler: ((_ error: ErrorPhotoPicker) -> Void)?
     
-    open var otherCompletionHandler: (() -> Void)?
+    @objc open var otherCompletionHandler: (() -> Void)?
     
     /**
      Customization colors
      */
-    open var alertTintColor: UIColor!
+    @objc open var alertTintColor: UIColor!
     
     // MARK: Error's definition
     @objc public enum ErrorPhotoPicker: Int {
@@ -92,12 +92,12 @@ open class MBPhotoPicker: NSObject {
     }
     
     // MARK: Public
-    open func present() -> Void {
+    @objc open func present() -> Void {
         let topController = UIApplication.shared.windows.first?.rootViewController
         present(topController!)
     }
     
-    open func present(_ controller: UIViewController!) -> Void {
+    @objc open func present(_ controller: UIViewController!) -> Void {
         self.controller = controller
         
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .actionSheet)
@@ -216,13 +216,13 @@ open class MBPhotoPicker: NSObject {
 }
 
 extension MBPhotoPicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    @objc public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true) { () -> Void in
             self.cancelCompletionHandler?()
         }
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] {
             self.photoHandler(image as! UIImage)
         } else {
@@ -231,7 +231,7 @@ extension MBPhotoPicker: UIImagePickerControllerDelegate, UINavigationController
         picker.dismiss(animated: true, completion: nil)
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         picker.dismiss(animated: true, completion: nil)
     }
 }
@@ -283,7 +283,7 @@ extension MBPhotoPicker {
                 let fetchOptions = PHFetchOptions()
                 fetchOptions.sortDescriptors = [NSSortDescriptor(key:"creationDate", ascending: true)]
                 let fetchResult: PHFetchResult = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: fetchOptions)
-                let asset: PHAsset? = fetchResult.lastObject as PHAsset!
+                let asset: PHAsset? = fetchResult.lastObject as PHAsset?
                 
                 let initialRequestOptions = PHImageRequestOptions()
                 initialRequestOptions.isSynchronous = true
