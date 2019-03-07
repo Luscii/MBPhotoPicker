@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
     s.name             = "MBPhotoPicker"
-    s.version          = "1.0.0"
+    s.version          = "1.1.0"
     s.summary          = "Easy and quick in implementation Photo Picker, based on Slack's picker."
 
     s.description      = <<-DESC

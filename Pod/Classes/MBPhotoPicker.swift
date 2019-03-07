@@ -35,9 +35,9 @@ import MobileCoreServices
     
     @objc open var disableEntitlements: Bool = false
     
-    @objc open var cameraDevice: UIImagePickerControllerCameraDevice = .rear
+    @objc open var cameraDevice: UIImagePickerController.CameraDevice = .rear
     
-    @objc open var cameraFlashMode: UIImagePickerControllerCameraFlashMode = .auto
+    @objc open var cameraFlashMode: UIImagePickerController.CameraFlashMode = .auto
     
     open var resizeImage: CGSize?
     
@@ -181,7 +181,7 @@ import MobileCoreServices
     internal weak var controller: UIViewController?
     
     var imagePicker: UIImagePickerController!
-    func presentImagePicker(_ sourceType: UIImagePickerControllerSourceType, topController: UIViewController!) {
+    func presentImagePicker(_ sourceType: UIImagePickerController.SourceType, topController: UIViewController!) {
         imagePicker = UIImagePickerController()
         imagePicker.sourceType = sourceType
         imagePicker.delegate = self
@@ -222,8 +222,8 @@ extension MBPhotoPicker: UIImagePickerControllerDelegate, UINavigationController
         }
     }
     
-    @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] {
+    @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] {
             self.photoHandler(image as! UIImage)
         } else {
             self.errorCompletionHandler?(.other)
@@ -290,7 +290,7 @@ extension MBPhotoPicker {
                 initialRequestOptions.resizeMode = .fast
                 initialRequestOptions.deliveryMode = .fastFormat
                 
-                manager.requestImageData(for: asset!, options: initialRequestOptions) { (data: Data?, title: String?, orientation: UIImageOrientation, info: [AnyHashable: Any]?) -> Void in
+                manager.requestImageData(for: asset!, options: initialRequestOptions) { (data: Data?, title: String?, orientation: UIImage.Orientation, info: [AnyHashable: Any]?) -> Void in
                     guard let dataImage = data else {
                         errorHandler(nil)
                         return
