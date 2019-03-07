@@ -8,10 +8,10 @@ Pod::Spec.new do |s|
     "MBPhotoPicker is a simple Photo Picker based on used by Slack. In easy way allows you to take a photo, select from camera roll, use last photo taken or import from external apps."
     DESC
 
-    s.homepage         = "https://github.com/mbutan/MBPhotoPicker"
+    s.homepage         = "https://github.com/luscii/MBPhotoPicker"
     s.license          = 'MIT'
     s.author           = { "Marcin Butanowicz" => "m.butan@gmail.com" }
-    s.source           = { :git => "https://github.com/mbutan/MBPhotoPicker.git", :tag => "#{s.version}" }
+    s.source           = { :git => "https://github.com/luscii/MBPhotoPicker.git", :tag => "#{s.version}" }
 
     s.platform     = :ios, '8.0'
     s.requires_arc = true
